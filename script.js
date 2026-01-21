@@ -7,16 +7,16 @@ let typing = false;
 
 const messages = [
   "Bem-vindo ao nosso pequeno universo.",
-  "Cada coração que você viu aqui não é aleatório.",
-  "Cada detalhe foi pensado em você.",
-  "Agora, Santana, antes de tudo acabar, eu preciso que você leia isso com o coração aberto."
+  "Cada coração que você vê aqui carrega um sentimento.",
+  "Cada detalhe foi feito pensando em você.",
+  "Agora, Santana, leia isso com o coração aberto."
 ];
 
 function createHeart() {
   const heart = document.createElement("span");
-  heart.innerHTML = "❤️";
+  heart.innerText = "❤️";
   heart.style.left = Math.random() * 100 + "vw";
-  heart.style.fontSize = Math.random() * 24 + 18 + "px";
+  heart.style.fontSize = Math.random() * 22 + 18 + "px";
   heart.style.animationDuration = Math.random() * 4 + 6 + "s";
   floating.appendChild(heart);
 
@@ -40,7 +40,7 @@ function typeText(text, callback) {
       typing = false;
       if (callback) callback();
     }
-  }, 25);
+  }, 28);
 }
 
 nextBtn.addEventListener("click", () => {
@@ -55,8 +55,8 @@ nextBtn.addEventListener("click", () => {
   else if (step === messages.length) {
     nextBtn.innerText = "Ler a carta";
 
-    typeText(`
-Santana,
+    typeText(
+`Santana,
 
 Talvez você não perceba de imediato, mas tudo o que você acabou de viver aqui foi feito em silêncio.
 Em noites pensando em você.
@@ -82,8 +82,8 @@ Você me ensinou que amar não é ter medo.
 Eu não prometo um caminho perfeito.
 Prometo mãos dadas quando doer.
 Prometo tentar todos os dias.
-Prometo escolher você, mesmo quando o mundo for difícil, mesmo quando o futuro parecer incerto.
-    `);
+Prometo escolher você, mesmo quando o mundo for difícil, mesmo quando o futuro parecer incerto.`
+    );
   }
 
   else if (step === messages.length + 1) {
@@ -93,14 +93,15 @@ Prometo escolher você, mesmo quando o mundo for difícil, mesmo quando o futuro
       setTimeout(createHeart, i * 60);
     }
 
-    typeText(`
-Depois de cada detalhe,
+    typeText(
+`Depois de cada detalhe,
 de cada sentimento,
 de cada parte de mim que eu coloquei aqui...
 
 Santana,
-você aceita transformar esse nós em para sempre?
-    `, showRing);
+você aceita transformar esse nós em para sempre?`,
+      showRing
+    );
   }
 
   else {
@@ -115,5 +116,5 @@ function showRing() {
   document.body.appendChild(ring);
 }
 
-// texto inicial
+/* TEXTO INICIAL */
 typeText(messages[0]);
